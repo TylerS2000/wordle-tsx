@@ -3,7 +3,7 @@ import "./Header.css";
 export default function Header() {
     return (
         <div className="Header">
-            <h1>React Quiz</h1>
+            <h1>Wordle</h1>
         </div>
     );
 }
