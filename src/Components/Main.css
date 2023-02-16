@@ -1,24 +1,28 @@
 .AnswerGrid{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 10px;
-    padding: 10px;
+    grid-template-rows: repeat(6,1fr);
+    grid-gap: 5px;
+    margin: 0px;
+    padding: 0px;
     background-color: #fff;
     justify-content: center;
     margin: auto;
+    width: 370px;
+    height: 420px;
+    box-sizing: border-box;
 }
 .row{
     display: flex;
     flex-direction: row;
-    width: 440px;
-    height: 80px;
+    width: 37   0px;
+    height: 62.5px;
+    
 }
 .AnswerBox{
     display: flex;
     flex-direction: row;
-    width: 80px;
-    height: 80px;
+    width: 62px;
+    height: 62.5px;
     border:2px solid #d3d6da;
     margin: 4px;
     justify-content: center;

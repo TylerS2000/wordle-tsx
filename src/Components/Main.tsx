@@ -5,10 +5,10 @@ export default function Main() {
     const [answer, setAnswer] = React.useState("");
     const [row, setRow] = React.useState(0);
     const [answers, setAnswers] = React.useState(["","","","","",""]);
-    const [correctAnswer, setCorrectAnswer] = React.useState("Mario");
+    const [correctAnswer, setCorrectAnswer] = React.useState("ABCDE");
         onkeydown = (e) => {
             if (answer.length<5&&e.key.match(/[a-zA-Z]/)&&e.key.length<2) {
-                setAnswer((prev)=>{return prev+e.key});
+                setAnswer((prev)=>{return prev+e.key.toUpperCase()});
             }
             if (e.key === "Backspace") {
                 setAnswer((prev)=>{return prev.substring(0, prev.length-1)});
