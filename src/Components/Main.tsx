@@ -1,12 +1,14 @@
 import "./Main.css"
 import Row from "./Row";
 import WinPopup from "./WinPopup";
+import answerGenerator from "../Helpers/answerGenerator";
+import Keyboard from "./Keyboard";
 import React from "react";
 export default function Main() {
     const [answer, setAnswer] = React.useState("");
     const [row, setRow] = React.useState(0);
     const [answers, setAnswers] = React.useState(["","","","","",""]);
-    const [correctAnswer, setCorrectAnswer] = React.useState("ABCDE");
+    const [correctAnswer, setCorrectAnswer] = React.useState("Tyler");
     const [win, setWin] = React.useState(false);
         win ===false? onkeydown = (e) => {
             if (answer.length<5&&e.key.match(/[a-zA-Z]/)&&e.key.length<2) {
@@ -31,6 +33,7 @@ export default function Main() {
     }, [answer,row]);
     //useEffect causes answer array to update with answer input
     return (
+    <div>
         <div className="AnswerGrid">
             <div>{win?<WinPopup/>:""}</div>
             <Row answer={answers[0]} row={0} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
@@ -40,5 +43,7 @@ export default function Main() {
             <Row answer={answers[4]} row={4} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
             <Row answer={answers[5]} row={5} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
         </div>
+        <Keyboard/>
+    </div>
     );
     }
