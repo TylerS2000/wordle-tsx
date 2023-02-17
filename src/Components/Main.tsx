@@ -6,6 +6,7 @@ export default function Main() {
     const [row, setRow] = React.useState(0);
     const [answers, setAnswers] = React.useState(["","","","","",""]);
     const [correctAnswer, setCorrectAnswer] = React.useState("ABCDE");
+    const [win, setWin] = React.useState(false);
         onkeydown = (e) => {
             if (answer.length<5&&e.key.match(/[a-zA-Z]/)&&e.key.length<2) {
                 setAnswer((prev)=>{return prev+e.key.toUpperCase()});
@@ -32,12 +33,13 @@ export default function Main() {
     //useEffect causes answer array to update with input
     return (
         <div className="AnswerGrid">
-            <Row answer={answers[0]} row={0} current={row} correctAnswer={correctAnswer}/>
-            <Row answer={answers[1]} row={1} current={row} correctAnswer={correctAnswer}/>
-            <Row answer={answers[2]} row={2} current={row} correctAnswer={correctAnswer}/>
-            <Row answer={answers[3]} row={3} current={row} correctAnswer={correctAnswer}/>
-            <Row answer={answers[4]} row={4} current={row} correctAnswer={correctAnswer}/>
-            <Row answer={answers[5]} row={5} current={row} correctAnswer={correctAnswer}/>
+            <div>{win||"no win"}</div>
+            <Row answer={answers[0]} row={0} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
+            <Row answer={answers[1]} row={1} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
+            <Row answer={answers[2]} row={2} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
+            <Row answer={answers[3]} row={3} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
+            <Row answer={answers[4]} row={4} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
+            <Row answer={answers[5]} row={5} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
         </div>
     );
     }

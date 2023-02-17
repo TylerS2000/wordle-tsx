@@ -1,8 +1,9 @@
 import React from 'react';
-export default function Row(props: {answer: string, row: number, current: number, correctAnswer: string}) {
+export default function Row(props: {answer: string, row: number, current: number, correctAnswer: string, win: boolean, setWin: Function}) {
     let [checked,setChecked] = React.useState(false);
     let [color ,setColor] = React.useState(["#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"]);
-   if(props.row===props.current-1&&checked===false){setChecked(true); checkAnswer();}
+   if(props.row===props.current-1&&checked===false){setChecked(true); checkAnswer(); console.log();
+   }
 
    function checkAnswer(){
          for(let i = 0; i<props.answer.length; i++){
@@ -12,8 +13,11 @@ export default function Row(props: {answer: string, row: number, current: number
             else if(props.correctAnswer.includes(props.answer[i])){setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#ffff00"; return newColor;});}
             else{setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#ff0000"; return newColor;});}
          }
-         console.log(color);
+         console.log(JSON.stringify(color),JSON.stringify(["#00ff00","#00ff00","#00ff00","#00ff00","#00ff00"]));
          
+    }
+   
+    if(checked===true&&JSON.stringify(color)===JSON.stringify(["#00ff00","#00ff00","#00ff00","#00ff00","#00ff00"])){props.setWin(true);
     }
     return (
         <div className="row">
