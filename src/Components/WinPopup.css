@@ -1,0 +1,11 @@
+.WinPopup{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0,.5);
+}
+.WinPopup-inner{
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+}

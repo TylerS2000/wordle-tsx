@@ -1,5 +1,6 @@
 import "./Main.css"
 import Row from "./Row";
+import WinPopup from "./WinPopup";
 import React from "react";
 export default function Main() {
     const [answer, setAnswer] = React.useState("");
@@ -7,7 +8,7 @@ export default function Main() {
     const [answers, setAnswers] = React.useState(["","","","","",""]);
     const [correctAnswer, setCorrectAnswer] = React.useState("ABCDE");
     const [win, setWin] = React.useState(false);
-        onkeydown = (e) => {
+        win ===false? onkeydown = (e) => {
             if (answer.length<5&&e.key.match(/[a-zA-Z]/)&&e.key.length<2) {
                 setAnswer((prev)=>{return prev+e.key.toUpperCase()});
             }
@@ -18,10 +19,8 @@ export default function Main() {
                 setAnswer("");
                 setRow((prev)=>prev+1);
             }
-            console.log(e.key);
-            
-        }
-          console.log(answers,row,answer);
+        }:onkeydown=null 
+        //if win is false allow typing, if it is true don't allow typing
             
     React.useEffect(() => {
         setAnswers((prev)=>{
@@ -30,10 +29,10 @@ export default function Main() {
             return newAnswers;
         });
     }, [answer,row]);
-    //useEffect causes answer array to update with input
+    //useEffect causes answer array to update with answer input
     return (
         <div className="AnswerGrid">
-            <div>{win||"no win"}</div>
+            <div>{win?<WinPopup/>:""}</div>
             <Row answer={answers[0]} row={0} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
             <Row answer={answers[1]} row={1} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
             <Row answer={answers[2]} row={2} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
