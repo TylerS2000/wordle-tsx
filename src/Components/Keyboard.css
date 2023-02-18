@@ -14,3 +14,9 @@
 .action{
     height: 58px;
 }
+.true{
+    background-color: #00ff00;
+}
+.false{
+    background-color: #ff0000;
+}

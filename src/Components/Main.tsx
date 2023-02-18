@@ -8,7 +8,8 @@ export default function Main() {
     const [answer, setAnswer] = React.useState("");
     const [row, setRow] = React.useState(0);
     const [answers, setAnswers] = React.useState(["","","","","",""]);
-    const [correctAnswer, setCorrectAnswer] = React.useState("Tyler");
+    const [correctAnswer, setCorrectAnswer] = React.useState("FRIES");
+    const [guess, setGuess] = React.useState("");
     const [win, setWin] = React.useState(false);
         win ===false? onkeydown = (e) => {
             if (answer.length<5&&e.key.match(/[a-zA-Z]/)&&e.key.length<2) {
@@ -18,6 +19,7 @@ export default function Main() {
                 setAnswer((prev)=>{return prev.substring(0, prev.length-1)});
             }
             if (e.key === "Enter"&&answer.length===5) {
+                setGuess(answer)
                 setAnswer("");
                 setRow((prev)=>prev+1);
             }
@@ -43,7 +45,7 @@ export default function Main() {
             <Row answer={answers[4]} row={4} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
             <Row answer={answers[5]} row={5} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
         </div>
-        <Keyboard/>
+        <Keyboard answer={guess} correctAnswer={correctAnswer}/>
     </div>
     );
     }
