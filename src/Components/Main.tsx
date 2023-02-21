@@ -46,7 +46,7 @@ export default function Main() {
             <Row answer={answers[4]} row={4} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
             <Row answer={answers[5]} row={5} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
         </div>
-        <Keyboard answer={guess} correctAnswer={correctAnswer}/>
+        <Keyboard guess={guess} correctAnswer={correctAnswer} answer={answer} setAnswer={setAnswer} setGuess={setGuess} setRow={setRow} />
     </div>
     );
     }

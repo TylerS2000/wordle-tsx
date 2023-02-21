@@ -1,6 +1,6 @@
 import './Keyboard.css'
 import React from 'react'
-export default function Keyboard (props:{answer:string, correctAnswer:string}) {
+export default function Keyboard (props:{guess:string, correctAnswer:string, answer:string, setAnswer:React.Dispatch<React.SetStateAction<string>>, setGuess:React.Dispatch<React.SetStateAction<string>>, setRow:React.Dispatch<React.SetStateAction<number>>}) {
     interface checkedLettersInterface {
         [key: string]: {guessed:boolean,correct:boolean};
     }
@@ -12,24 +12,36 @@ export default function Keyboard (props:{answer:string, correctAnswer:string}) {
     const rowThree="Backspace Z X C V B N M Enter"
     const rowThreeArr=rowThree.split(' ')
     function checkLetter(letter:string){
-        if(props.correctAnswer.includes(letter)&&props.answer.includes(letter)&&checkedLetters[letter].guessed===false){
+        if(props.correctAnswer.includes(letter)&&props.guess.includes(letter)&&checkedLetters[letter].guessed===false){
             setCheckedLetters((prev)=>{return {...prev,[letter]:{guessed:true,correct:true}}})
             return
         }
-        if(!props.correctAnswer.includes(letter)&&props.answer.includes(letter)&&checkedLetters[letter].guessed===false){
+        if(!props.correctAnswer.includes(letter)&&props.guess.includes(letter)&&checkedLetters[letter].guessed===false){
             setCheckedLetters((prev)=>{return {...prev,[letter]:{guessed:true,correct:false}}})
             return
         }
     }
+    function handleClick(letter:string){
+        if(letter==="Backspace"){
+            props.setAnswer(props.answer.slice(0,-1))
+            return
+        }
+        if (letter === "Enter"&&props.answer.length===5) {
+                props.setGuess(props.answer)
+                props.setAnswer("");
+                props.setRow((prev)=>prev+1);
+            }
+        if(props.answer.length<5&&letter.length===1){props.setAnswer(props.answer+letter)}
+    }
 return<div className='keyboardWrapper'>
 <div className='rowOne'>
-{rowOneArr.map(letter=>{checkLetter(letter);return(<button className={`letter ${checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")}`}>{letter}</button>)})}
+{rowOneArr.map(letter=>{checkLetter(letter);return(<button onClick={()=>handleClick(letter)}className={`letter ${checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")}`}>{letter}</button>)})}
 </div>
 <div className='rowTwo'>
-{rowTwoArr.map(letter=>{checkLetter(letter);return(<button className={`letter ${checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")}`}>{letter}</button>)})}
+{rowTwoArr.map(letter=>{checkLetter(letter);return(<button onClick={()=>handleClick(letter)}className={`letter ${checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")}`}>{letter}</button>)})}
 </div>
 <div className='rowThree'>
-{rowThreeArr.map(letter=>{checkLetter(letter);return(<button className={(letter.length>1?'action ':'letter '+(checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")))}>{letter}</button>)})}
+{rowThreeArr.map(letter=>{checkLetter(letter);return(<button onClick={()=>handleClick(letter)}className={(letter.length>1?'action ':'letter '+(checkedLetters[letter].correct?true:(checkedLetters[letter].guessed?false:"")))}>{letter}</button>)})}
 </div>
 </div>
 }

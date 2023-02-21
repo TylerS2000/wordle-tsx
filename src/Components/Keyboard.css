@@ -11,6 +11,12 @@
     width: 43px;
     height: 58px;
     font-weight: bolder;
+    border: 0;
+    border-radius: 4px;
+    background-color: #d3d6da;
+    color: #000000;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 .action{
     height: 58px;
