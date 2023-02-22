@@ -20,14 +20,30 @@
 }
 .action{
     height: 58px;
+    background-color: #d3d6da;
+    color: #000000;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: 0;
+    border-radius: 4px;
 }
-.true{
+.correct{
     background-color: #00ff00;
 }
-.false{
+.incorrect{
     background-color: #ff0000;
+}
+.almost{
+    background-color: #ffff00;
 }
 
 @media(max-width:767px){
-    .letter{width:35px}
+    .letter{
+        width:8vw;
+        margin: 1.5px;
+    }
+    .keyboardWrapper{
+        bottom: 0;
+        
+    }
 }
