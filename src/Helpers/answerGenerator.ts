@@ -1,6 +1,4 @@
+import words from './words.json'
 export default function answerGenerator(){
-    const answers = [
-        "House"
-    ]
-    return answers[Math.round(Math.random()*answers.length-1)]
+    return words[Math.round(Math.random()*words.length-1)]
 }
