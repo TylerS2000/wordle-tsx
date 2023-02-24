@@ -1,6 +1,6 @@
 import './Keyboard.css'
 import React from 'react'
-export default function Keyboard(props: { guess: string, correctAnswer: string, answer: string, setAnswer: React.Dispatch<React.SetStateAction<string>>, setGuess: React.Dispatch<React.SetStateAction<string>>, setRow: React.Dispatch<React.SetStateAction<number>> }) {
+export default function Keyboard(props: { guess: string, correctAnswer: string, answer: string, setAnswer: React.Dispatch<React.SetStateAction<string>>, setGuess: React.Dispatch<React.SetStateAction<string>>, setRow: React.Dispatch<React.SetStateAction<number>>, words : string[]}) {
     interface checkedLettersInterface {
         [key: string]: { guessed: boolean, correct: boolean, correctPlace: boolean };
     }
@@ -36,10 +36,13 @@ export default function Keyboard(props: { guess: string, correctAnswer: string, 
             props.setAnswer(props.answer.slice(0, -1))
             return
         }
-        if (letter === "Enter" && props.answer.length === 5) {
+        if (letter === "Enter" && props.answer.length === 5&&props.words.includes(props.answer)) {
             props.setGuess(props.answer)
             props.setAnswer("");
             props.setRow((prev) => prev + 1);
+        }
+        if (letter === "Enter" && props.answer.length === 5&&!props.words.includes(props.answer)) {
+           alert("Not in word list")
         }
         if (props.answer.length < 5 && letter.length === 1) { props.setAnswer(props.answer + letter) }
     }
