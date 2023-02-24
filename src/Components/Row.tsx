@@ -9,7 +9,7 @@ export default function Row(props: {answer: string, row: number, current: number
          for(let i = 0; i<props.answer.length; i++){
             console.log(props.correctAnswer);
             
-            if(props.answer[i]===props.correctAnswer[i]){setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#00ff00"; return newColor;});}
+            if(props.answer[i]===props.correctAnswer[i]){setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#6aaa64"; return newColor;});}
             else if(props.correctAnswer.includes(props.answer[i])){setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#ffff00"; return newColor;});}
             else{setColor((prev)=>{let newColor = [...prev]; newColor[i] = "#ff0000"; return newColor;});}
          }
@@ -17,7 +17,7 @@ export default function Row(props: {answer: string, row: number, current: number
          
     }
    
-    if(checked===true&&JSON.stringify(color)===JSON.stringify(["#00ff00","#00ff00","#00ff00","#00ff00","#00ff00"])){props.setWin(true);
+    if(checked===true&&JSON.stringify(color)===JSON.stringify(["#6aaa64","#6aaa64","#6aaa64","#6aaa64","#6aaa64"])){props.setWin(true);
     }
     return (
         <div className="row">
