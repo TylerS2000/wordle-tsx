@@ -1,4 +1,4 @@
-import words from './words.json'
+import validAnswers from './validAnswers.json'
 export default function answerGenerator(){
-    return words[Math.round(Math.random()*words.length-1)]
+    return validAnswers[Math.round(Math.random()*validAnswers.length-1)]
 }
