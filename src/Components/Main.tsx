@@ -40,7 +40,7 @@ export default function Main() {
     //useEffect causes answer array to update with answer input
     return (
     <div className="Main">
-        <div>{win||row===6?<WinPopup win={win}/>:""}</div>
+        <div>{win||row===6?<WinPopup answer={correctAnswer} win={win}/>:""}</div>
         <div className="AnswerGrid">
             
             <Row answer={answers[0]} row={0} current={row} correctAnswer={correctAnswer} win={win} setWin={setWin}/>
