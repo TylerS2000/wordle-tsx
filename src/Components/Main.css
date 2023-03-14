@@ -1,11 +1,11 @@
-.Main{
+.Main {
     width: 100vw;
     height: 90vh;
 }
 
-.AnswerGrid{
+.AnswerGrid {
     display: grid;
-    grid-template-rows: repeat(6,1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-gap: 10px;
     margin: 0px;
     padding: 0px;
@@ -17,19 +17,21 @@
     height: 420px;
     box-sizing: border-box;
 }
-.row{
+
+.row {
     display: flex;
     flex-direction: row;
     width: 370px;
     height: 62.5px;
-    
+
 }
-.AnswerBox{
+
+.AnswerBox {
     display: flex;
     flex-direction: row;
     width: 62px;
     height: 62.5px;
-    border:2px solid #d3d6da;
+    border: 2px solid #d3d6da;
     margin: 4px;
     justify-content: center;
     align-items: center;

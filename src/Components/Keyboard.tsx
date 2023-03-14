@@ -1,6 +1,6 @@
 import './Keyboard.css'
 import React from 'react'
-export default function Keyboard(props: { guess: string, correctAnswer: string, answer: string, setAnswer: React.Dispatch<React.SetStateAction<string>>, setGuess: React.Dispatch<React.SetStateAction<string>>, setRow: React.Dispatch<React.SetStateAction<number>>, words : string[]}) {
+export default function Keyboard(props: { guess: string, correctAnswer: string, answer: string, setAnswer: React.Dispatch<React.SetStateAction<string>>, setGuess: React.Dispatch<React.SetStateAction<string>>, setRow: React.Dispatch<React.SetStateAction<number>>, words: string[] }) {
     interface checkedLettersInterface {
         [key: string]: { guessed: boolean, correct: boolean, correctPlace: boolean };
     }
@@ -12,7 +12,7 @@ export default function Keyboard(props: { guess: string, correctAnswer: string, 
     const rowThree = "Backspace Z X C V B N M Enter"
     const rowThreeArr = rowThree.split(' ')
     console.log(checkedLetters);
-    
+
     function checkLetter(letter: string) {
         if (props.correctAnswer.includes(letter) && props.guess.includes(letter) && checkedLetters[letter].guessed === false && props.correctAnswer.indexOf(letter) === props.guess.indexOf(letter)) {
             setCheckedLetters((prev) => { return { ...prev, [letter]: { guessed: true, correct: true, correctPlace: true } } })
@@ -26,23 +26,23 @@ export default function Keyboard(props: { guess: string, correctAnswer: string, 
             setCheckedLetters((prev) => { return { ...prev, [letter]: { guessed: true, correct: false, correctPlace: false } } })
             return
         }
-       if(checkedLetters[letter].guessed === true&&checkedLetters[letter].correctPlace===false && props.guess.includes(letter)===true&&props.correctAnswer.includes(letter)===true&&props.correctAnswer.indexOf(letter)===props.guess.indexOf(letter)){
-              setCheckedLetters((prev) => { return { ...prev, [letter]: { guessed: true, correct: true, correctPlace: true } } })
-       }
-       return
+        if (checkedLetters[letter].guessed === true && checkedLetters[letter].correctPlace === false && props.guess.includes(letter) === true && props.correctAnswer.includes(letter) === true && props.correctAnswer.indexOf(letter) === props.guess.indexOf(letter)) {
+            setCheckedLetters((prev) => { return { ...prev, [letter]: { guessed: true, correct: true, correctPlace: true } } })
+        }
+        return
     }
     function handleClick(letter: string) {
         if (letter === "Backspace") {
             props.setAnswer(props.answer.slice(0, -1))
             return
         }
-        if (letter === "Enter" && props.answer.length === 5&&props.words.includes(props.answer)) {
+        if (letter === "Enter" && props.answer.length === 5 && props.words.includes(props.answer)) {
             props.setGuess(props.answer)
             props.setAnswer("");
             props.setRow((prev) => prev + 1);
         }
-        if (letter === "Enter" && props.answer.length === 5&&!props.words.includes(props.answer)) {
-           alert("Not in word list")
+        if (letter === "Enter" && props.answer.length === 5 && !props.words.includes(props.answer)) {
+            alert("Not in word list")
         }
         if (props.answer.length < 5 && letter.length === 1) { props.setAnswer(props.answer + letter) }
     }
@@ -53,7 +53,7 @@ export default function Keyboard(props: { guess: string, correctAnswer: string, 
         if (checkedLetters[letter].correct && !checkedLetters[letter].correctPlace) {
             return "letter almost"
         }
-        if (!checkedLetters[letter].correct&&checkedLetters[letter].guessed) {
+        if (!checkedLetters[letter].correct && checkedLetters[letter].guessed) {
             return "letter incorrect"
         }
         return "letter"

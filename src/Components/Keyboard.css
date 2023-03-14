@@ -1,4 +1,4 @@
-.keyboardWrapper{
+.keyboardWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,8 @@
     align-items: center;
     margin-top: 4vh;
 }
-.letter{
+
+.letter {
     margin-top: 10px;
     width: 43px;
     height: 58px;
@@ -18,7 +19,8 @@
     margin-left: 3px;
     margin-right: 3px;
 }
-.action{
+
+.action {
     height: 58px;
     background-color: #d3d6da;
     color: #000000;
@@ -27,26 +29,30 @@
     border: 0;
     border-radius: 4px;
 }
-.correct{
+
+.correct {
     background-color: #6aaa64;
     color: #ffffff;
 }
-.incorrect{
+
+.incorrect {
     background-color: #787c7e;
     color: #ffffff;
 }
-.almost{
+
+.almost {
     background-color: #c9b458;
     color: #ffffff;
 }
 
-@media(max-width:767px){
-    .letter{
-        width:8vw;
+@media(max-width:767px) {
+    .letter {
+        width: 8vw;
         margin: 1.5px;
     }
-    .keyboardWrapper{
+
+    .keyboardWrapper {
         bottom: 0;
-        
+
     }
 }
